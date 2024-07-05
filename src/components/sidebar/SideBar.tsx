@@ -28,7 +28,7 @@ const SideBar = () => {
         width: "60vh",
         display: "flex",
         flexDirection: "column",
-        height: "100%",
+        height: "100vh",
       }}
     >
       <Header />

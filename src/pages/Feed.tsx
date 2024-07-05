@@ -65,7 +65,13 @@ const Feed = () => {
   };
 
   return (
-    <Container sx={{ marginLeft: "20vh", width: "90%", height: "auto" }}>
+    <Container
+      sx={{
+        marginLeft: "20vh",
+        width: { xs: "70%", md: "90%" },
+        height: "auto",
+      }}
+    >
       <Container>
         <Card
           sx={{
@@ -99,11 +105,11 @@ const Feed = () => {
             component: "form",
             onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
               event.preventDefault();
-              // const formData = new FormData(event.currentTarget);
-              // // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              // const formJson = Object.fromEntries((formData as any).entries());
-              // const email = formJson.email;
-              // console.log(email);
+              const formData = new FormData(event.currentTarget);
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const formJson = Object.fromEntries((formData as any).entries());
+              const post = formJson.post;
+              console.log(post);
               handleClose();
             },
           }}

@@ -5,10 +5,11 @@ import ChatBox from "../components/chatbox/ChatBox";
 const Message = () => {
   return (
     <Box
-      mt={0}
       sx={{
-        height: "120vh",
-        marginLeft: "22vh",
+        top: 0,
+        height: "100%",
+        width: "92%",
+        ml: 16,
         display: "flex",
       }}
     >

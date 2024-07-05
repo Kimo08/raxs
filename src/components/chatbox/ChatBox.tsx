@@ -7,9 +7,9 @@ const ChatBox = () => {
   return (
     <Box
       sx={{
-        width: "170vh",
+        width: "100%",
         display: "flex",
-        height: "120vh",
+        height: "100vh",
         flexDirection: "column",
       }}
     >

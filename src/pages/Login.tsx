@@ -35,36 +35,50 @@ const Login = () => {
   return (
     <div>
       <Container
-        sx={{ background: "lightgrey", height: "80vh", width: "120vh", mt: 4 }}
+        sx={{
+          background: "lightgrey",
+          maxHeight: "90vh",
+          minHeight: "70vh",
+          width: { xs: "76vh", md: "120vh" },
+          boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
+          mt: 8,
+        }}
       >
         <Typography variant="h3" gutterBottom>
           Raxs
         </Typography>
         <Grid container spacing={2}>
-          <Grid item xs={6} sx={{ mt: 4 }}>
+          <Grid item xs={6} sx={{ mt: 2 }}>
             <Paper
               square
               sx={{
                 bgcolor: "primary.main",
                 color: "primary.contrastText",
                 height: "100%",
+                boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
               }}
             >
-              <Box sx={{ p: 5 }}>
+              <Box sx={{ p: 2 }}>
                 <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
                   <AdbIcon
-                    sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+                    sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}
                   />
                 </Box>
 
                 <Typography
                   variant="h4"
-                  sx={{ fontWeight: "500", mt: 3 }}
+                  sx={{
+                    fontWeight: { md: "500" },
+                    fontSize: { xs: "20px", md: "32px" },
+                    mt: 3,
+                  }}
                   color="secondary"
                 >
                   Raxs Chat
                 </Typography>
-                <Typography sx={{ mt: 2 }}>
+                <Typography
+                  sx={{ mt: 2, fontSize: { xs: "14px", md: "16px" } }}
+                >
                   Raxs chat was developed in the year 2024, the year of the
                   dragon. It is a platform where we connect with one another. It
                   offers a lot of services.
@@ -72,7 +86,7 @@ const Login = () => {
               </Box>
             </Paper>
           </Grid>
-          <Grid item xs={6} sx={{ mt: 4 }}>
+          <Grid item xs={6} sx={{ mt: 2 }}>
             <Typography variant="h6" color="success">
               Login
             </Typography>
@@ -85,9 +99,9 @@ const Login = () => {
             >
               <div>
                 <TextField
-                  sx={{ marginTop: "20px" }}
+                  sx={{ mt: 2, fontSize: { xs: "6px", md: "12px" } }}
                   fullWidth
-                  helperText="please enter your email"
+                  // helperText="please enter your email"
                   autoFocus
                   required
                   margin="dense"
@@ -132,7 +146,10 @@ const Login = () => {
                 Login
               </Button>
             </form>
-            <Typography variant="body1" sx={{ marginTop: "20px" }}>
+            <Typography
+              variant="body1"
+              sx={{ mt: 2, fontSize: { xs: "14px", md: "16px" } }}
+            >
               You don't have an account? <Link to="/register">Register</Link>
             </Typography>
           </Grid>

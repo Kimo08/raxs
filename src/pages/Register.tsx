@@ -43,39 +43,48 @@ const Register = () => {
       <Container
         sx={{
           background: "lightgrey",
-          height: "90vh",
-          width: "120vh",
+          maxHeight: "90vh",
+          minHeight: "70vh",
+          width: { xs: "76vh", md: "120vh" },
           boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
+          mt: 6,
         }}
       >
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           Welcome to Raxs Media
         </Typography>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={6} sx={{ mt: 2 }}>
             <Paper
               square
               sx={{
                 bgcolor: "primary.main",
                 color: "primary.contrastText",
-                height: "100%",
+                height: "90%",
+                boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
               }}
             >
-              <Box sx={{ p: 5 }}>
-                <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
+              <Box sx={{ p: 2 }}>
+                <Box sx={{ display: "flex", gap: 3, justifyContent: "center" }}>
                   <AdbIcon
-                    sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+                    sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}
                   />
                 </Box>
 
                 <Typography
                   variant="h4"
-                  sx={{ fontWeight: "500", mt: 3 }}
+                  sx={{
+                    fontWeight: { md: "500" },
+                    fontSize: { xs: "20px", md: "32px" },
+                    mt: 3,
+                  }}
                   color="secondary"
                 >
                   Raxs Chat
                 </Typography>
-                <Typography sx={{ mt: 2 }}>
+                <Typography
+                  sx={{ mt: 2, fontSize: { xs: "14px", md: "16px" } }}
+                >
                   Raxs chat was developed in the year 2024, the year of the
                   dragon. It is a platform where we connect with one another. It
                   offers a lot of services.
@@ -87,7 +96,12 @@ const Register = () => {
             <form noValidate autoComplete="off">
               <Typography
                 variant="h5"
-                sx={{ mb: 2, fontWeight: "500", textTransform: "uppercase" }}
+                sx={{
+                  mb: 1,
+                  fontWeight: "500",
+                  fontSize: { xs: "16px", md: "20px" },
+                  textTransform: "uppercase",
+                }}
               >
                 Register
               </Typography>
@@ -104,9 +118,9 @@ const Register = () => {
               </div>
               <div>
                 <TextField
-                  sx={{ marginTop: "20px" }}
+                  sx={{ mt: 1 }}
                   fullWidth
-                  helperText="please enter your email"
+                  // helperText="please enter your email"
                   autoFocus
                   required
                   margin="dense"
@@ -117,22 +131,7 @@ const Register = () => {
                 />
               </div>
               <div>
-                {/* <TextField
-              sx={{ marginTop: "20px" }}
-              required
-              id="outlined-required"
-              label="password"
-              value={password}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setPassword(event.target.value);
-              }}
-            /> */}
-                <FormControl
-                  fullWidth
-                  sx={{ marginTop: "20px" }}
-                  variant="filled"
-                  required
-                >
+                <FormControl fullWidth sx={{ mt: 1 }} variant="filled" required>
                   <InputLabel htmlFor="filled-adornment-password">
                     Password
                   </InputLabel>
@@ -155,17 +154,21 @@ const Register = () => {
                 </FormControl>
               </div>
               <Button
-                sx={{ marginTop: "20px" }}
+                sx={{ mt: 1 }}
                 type="submit"
                 color="secondary"
                 variant="contained"
+                fullWidth
                 endIcon={<KeyboardArrowRight />}
                 onClick={() => navigate("/dash")}
               >
                 Register
               </Button>
             </form>
-            <Typography variant="body1" sx={{ marginTop: "20px" }}>
+            <Typography
+              variant="body1"
+              sx={{ mt: 1, fontSize: { xs: "14px", md: "16px" } }}
+            >
               Already have an account? <Link to="/">Login</Link>
             </Typography>
           </Grid>
