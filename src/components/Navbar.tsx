@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import AdbIcon from "@mui/icons-material/Adb";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   Box,
   Divider,
@@ -26,7 +27,11 @@ import { Logout, PersonAdd, Settings } from "@mui/icons-material";
 
 const drawerWidth = 170;
 
-const Navbar = () => {
+interface Props {
+  window?: () => Window;
+}
+
+const Navbar = (props: Props) => {
   const navigate = useNavigate();
 
   const menuItem = [
@@ -54,6 +59,28 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isClosing, setIsClosing] = React.useState(false);
+
+  const handleDrawerClose = () => {
+    setIsClosing(true);
+    setMobileOpen(false);
+  };
+
+  const handleDrawerTransitionEnd = () => {
+    setIsClosing(false);
+  };
+
+  const handleDrawerToggle = () => {
+    if (!isClosing) {
+      setMobileOpen(!mobileOpen);
+    }
+  };
+
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
   return (
     <Container>
       <Box sx={{ flexGrow: 1 }}>
@@ -64,15 +91,15 @@ const Navbar = () => {
           >
             <Container maxWidth="xl">
               <Toolbar disableGutters>
-                <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+                <AdbIcon sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }} />
                 <Typography
                   variant="h6"
                   noWrap
                   sx={{
                     flexGrow: 1,
                     mr: 2,
-                    display: { xs: "none", md: "flex" },
-                    fontFamily: "monospace",
+                    display: { xs: "flex", md: "flex" },
+                    // fontFamily: "monospace",
                     fontWeight: 700,
                     letterSpacing: ".3rem",
                     color: "inherit",
@@ -88,7 +115,10 @@ const Navbar = () => {
                         <Avatar
                           alt="Nature"
                           src="/src/img/ava.jpg"
-                          sx={{ width: 56, height: 56 }}
+                          sx={{
+                            width: { xs: 48, md: 56 },
+                            height: { xs: 48, md: 56 },
+                          }}
                         />
                       </IconButton>
                     </Tooltip>
@@ -135,13 +165,6 @@ const Navbar = () => {
                       onClose={handleCloseUserMenu}
                       onClick={handleCloseUserMenu}
                     >
-                      {/* {settings.map((setting) => (
-                          <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                            <Typography textAlign="center">
-                              {setting}
-                            </Typography>
-                          </MenuItem>
-                        ))} */}
                       <MenuItem onClick={handleCloseUserMenu}>
                         <Avatar /> Profile
                       </MenuItem>
@@ -170,42 +193,93 @@ const Navbar = () => {
                     </Menu>
                   </Box>
                 </div>
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="end"
+                  onClick={handleDrawerToggle}
+                  sx={{ ml: 2, display: { sm: "none" } }}
+                >
+                  <MenuIcon />
+                </IconButton>
               </Toolbar>
             </Container>
           </AppBar>
         </Toolbar>
 
         {/* side drawer */}
-        <Drawer
-          variant="permanent"
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            [`& .MuiDrawer-paper`]: {
-              width: drawerWidth,
-              boxSizing: "border-box",
-            },
-          }}
+        <Box
+          component="nav"
+          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         >
-          <Toolbar />
-          {/* list/ links */}
-          <Box sx={{ overflow: "auto" }}>
-            <List>
-              {menuItem.map((item) => (
-                <ListItem
-                  disablePadding
-                  key={item.text}
-                  onClick={() => navigate(item.path)}
-                >
-                  <ListItemButton>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        </Drawer>
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onTransitionEnd={handleDrawerTransitionEnd}
+            onClose={handleDrawerClose}
+            ModalProps={{ keepMounted: true }}
+            sx={{
+              width: drawerWidth,
+              display: { xs: "block", sm: "none" },
+              flexShrink: 0,
+              [`& .MuiDrawer-paper`]: {
+                width: drawerWidth,
+                boxSizing: "border-box",
+              },
+            }}
+          >
+            <Toolbar />
+            {/* list/ links */}
+            <Box sx={{ overflow: "auto" }}>
+              <List>
+                {menuItem.map((item) => (
+                  <ListItem
+                    disablePadding
+                    key={item.text}
+                    onClick={() => navigate(item.path)}
+                  >
+                    <ListItemButton>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </Drawer>
+          <Drawer
+            variant="permanent"
+            sx={{
+              width: drawerWidth,
+              display: { xs: "none", sm: "block" },
+              [`& .MuiDrawer-paper`]: {
+                width: drawerWidth,
+                boxSizing: "border-box",
+              },
+            }}
+            open
+          >
+            <Toolbar />
+            {/* list/ links */}
+            <Box sx={{ overflow: "auto" }}>
+              <List>
+                {menuItem.map((item) => (
+                  <ListItem
+                    disablePadding
+                    key={item.text}
+                    onClick={() => navigate(item.path)}
+                  >
+                    <ListItemButton>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </Drawer>
+        </Box>
       </Box>
     </Container>
   );

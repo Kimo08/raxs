@@ -36,9 +36,9 @@ const DisplayPost = () => {
         sx={{
           justifyContent: "center",
           display: "flex",
-          // ml: 1,
+          ml: { md: 9 },
           height: "100%",
-          width: { xs: "56vh", md: "160vh" },
+          width: { xs: "50vh", md: "160vh" },
           // background: "#577399",
           background: "#495867",
         }}
@@ -52,7 +52,7 @@ const DisplayPost = () => {
           <Card
             variant="outlined"
             sx={{
-              width: { xs: "50vh", md: "150vh" },
+              width: { xs: "48vh", md: "150vh" },
               mb: 2,
               background: "#e5ecf4",
             }}
@@ -67,7 +67,7 @@ const DisplayPost = () => {
               sx={{ height: "50px" }}
             />
             <Divider />
-            <Box sx={{ height: "28vh" }}>
+            <Box sx={{ height: "auto" }}>
               <Typography gutterBottom>Hello Jeo</Typography>
             </Box>
             <Divider />
@@ -86,6 +86,13 @@ const DisplayPost = () => {
                     component: "form",
                     onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
                       event.preventDefault();
+                      const formData = new FormData(event.currentTarget);
+                      const formJson = Object.fromEntries(
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        (formData as any).entries()
+                      );
+                      const post = formJson.post;
+                      console.log(post);
                       handleClose();
                     },
                   }}
@@ -119,7 +126,7 @@ const DisplayPost = () => {
           <Card
             variant="outlined"
             sx={{
-              width: { xs: "50vh", md: "150vh" },
+              width: { xs: "48vh", md: "150vh" },
               mb: 2,
               background: "#e5ecf4",
             }}
@@ -134,7 +141,7 @@ const DisplayPost = () => {
               sx={{ height: "50px" }}
             />
             <Divider />
-            <Box sx={{ height: "28vh" }}>
+            <Box sx={{ height: "auto" }}>
               <Typography gutterBottom>Anchor the ship</Typography>
             </Box>
             <Divider />

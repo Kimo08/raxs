@@ -27,7 +27,7 @@ const Head = () => {
             <Button color="secondary" sx={{ minWidth: "auto", mr: 1 }}>
               <ArrowBackIcon />
             </Button>
-            <Avatar>P</Avatar>
+            <Avatar>M</Avatar>
           </>
         }
         action={
@@ -40,7 +40,7 @@ const Head = () => {
             </IconButton>
           </>
         }
-        title="Port Mech"
+        title="Mike Lowry"
         subheader={
           <Typography variant="caption">Software Developer</Typography>
         }

@@ -53,6 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+
 const Feed = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -67,7 +68,7 @@ const Feed = () => {
   return (
     <Container
       sx={{
-        marginLeft: "20vh",
+        marginLeft: { xs: "none", md: "20vh" },
         width: { xs: "70%", md: "90%" },
         height: "auto",
       }}
