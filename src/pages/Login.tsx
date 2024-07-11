@@ -39,7 +39,7 @@ const Login = () => {
           background: "lightgrey",
           maxHeight: "90vh",
           minHeight: "70vh",
-          width: { xs: "60%", md: "70%" },
+          width: { xs: "70%", md: "70%" },
           boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
           mt: 8,
         }}
@@ -69,7 +69,7 @@ const Login = () => {
                   variant="h4"
                   sx={{
                     fontWeight: { md: "500" },
-                    fontSize: { xs: "20px", md: "32px" },
+                    fontSize: { xs: "16px", md: "32px" },
                     mt: 3,
                   }}
                   color="secondary"
@@ -77,7 +77,7 @@ const Login = () => {
                   Raxs Chat
                 </Typography>
                 <Typography
-                  sx={{ mt: 2, fontSize: { xs: "14px", md: "16px" } }}
+                  sx={{ mt: 2, fontSize: { xs: "12px", md: "16px" } }}
                 >
                   Raxs chat was developed in the year 2024, the year of the
                   dragon. It is a platform where we connect with one another. It
