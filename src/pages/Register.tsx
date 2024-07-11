@@ -45,7 +45,7 @@ const Register = () => {
           background: "lightgrey",
           maxHeight: "90vh",
           minHeight: "70vh",
-          width: { xs: "70%", md: "80%" },
+          width: { xs: "70%", md: "70%" },
           boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
           mt: 6,
         }}
