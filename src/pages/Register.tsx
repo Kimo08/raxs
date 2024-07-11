@@ -64,7 +64,7 @@ const Register = () => {
                 boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
               }}
             >
-              <Box sx={{ p: 2 }}>
+              <Box sx={{ p: 1 }}>
                 <Box sx={{ display: "flex", gap: 3, justifyContent: "center" }}>
                   <AdbIcon
                     sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}
@@ -83,7 +83,7 @@ const Register = () => {
                   Raxs Chat
                 </Typography>
                 <Typography
-                  sx={{ mt: 2, fontSize: { xs: "12px", md: "16px" } }}
+                  sx={{ mt: 1, fontSize: { xs: "12px", md: "16px" } }}
                 >
                   Raxs chat was developed in the year 2024, the year of the
                   dragon. It is a platform where we connect with one another. It
