@@ -6,14 +6,14 @@ const ChatBox = ({
   onClick,
   chat,
 }: {
-  onClick: (_id: string) => void;
+  onClick: () => void;
   chat: string | null;
 }) => {
   return (
     <Box
       sx={{
         overflow: "auto",
-        width: { xs: "100%", md: "70%" },
+        width: { xs: "100%", md: "%" },
         display: { xs: chat ? "flex" : "none", md: "flex" },
         flexDirection: "column",
       }}
