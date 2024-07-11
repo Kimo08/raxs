@@ -39,7 +39,7 @@ const Login = () => {
           background: "lightgrey",
           maxHeight: "90vh",
           minHeight: "70vh",
-          width: { xs: "76vh", md: "120vh" },
+          width: { xs: "60%", md: "70%" },
           boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
           mt: 8,
         }}
