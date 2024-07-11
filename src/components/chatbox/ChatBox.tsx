@@ -13,7 +13,7 @@ const ChatBox = ({
     <Box
       sx={{
         overflow: "auto",
-        width: { xs: "100%", md: "60%" },
+        width: { xs: "100%", md: "70%" },
         display: { xs: chat ? "flex" : "none", md: "flex" },
         flexDirection: "column",
       }}

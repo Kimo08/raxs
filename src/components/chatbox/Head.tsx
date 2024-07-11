@@ -10,13 +10,12 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import CallIcon from "@mui/icons-material/Call";
 
-const Head = ({ onClick }: { onClick: (_id: string) => void }) => {
+const Head = ({ onClick }: { onClick: () => void }) => {
   return (
     <Card
       sx={{
         borderRadius: 0,
         background: "#003566",
-        // background: "#355070",
         color: "#fff",
       }}
       elevation={0}
