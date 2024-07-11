@@ -6,10 +6,8 @@ const Message = () => {
   return (
     <Box
       sx={{
-        top: 0,
         height: "100%",
-        width: { sx: "100%", md: "91.5%" },
-        ml: { sx: "none", md: "11%" },
+        width: { sx: "100%", md: "100%" },
         display: "flex",
       }}
     >

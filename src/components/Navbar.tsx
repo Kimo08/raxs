@@ -21,7 +21,7 @@ import {
 } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { SubjectOutlined } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import ChatIcon from "@mui/icons-material/Chat";
 import { Logout, PersonAdd, Settings } from "@mui/icons-material";
 
@@ -82,206 +82,204 @@ const Navbar = (props: Props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Container>
-      <Box sx={{ flexGrow: 1 }}>
-        <Toolbar>
-          <AppBar
-            position="fixed"
-            sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+    <>
+      {/* <Toolbar> */}
+      <AppBar
+        position="fixed"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, height: "60px" }}
+      >
+        {/* <Container maxWidth="xl"> */}
+        <Box display="flex" alignItems="center" px={5}>
+          <AdbIcon sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            sx={{
+              flexGrow: 1,
+              mr: 2,
+              display: { xs: "flex", md: "flex" },
+              // fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
           >
-            <Container maxWidth="xl">
-              <Toolbar disableGutters>
-                <AdbIcon sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }} />
-                <Typography
-                  variant="h6"
-                  noWrap
-                  sx={{
-                    flexGrow: 1,
-                    mr: 2,
-                    display: { xs: "flex", md: "flex" },
-                    // fontFamily: "monospace",
-                    fontWeight: 700,
-                    letterSpacing: ".3rem",
-                    color: "inherit",
-                    textDecoration: "none",
-                  }}
-                >
-                  RAXS
-                </Typography>
-                <div>
-                  <Box sx={{}}>
-                    <Tooltip title="Open settings">
-                      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <Avatar
-                          alt="Nature"
-                          src="/src/img/ava.jpg"
-                          sx={{
-                            width: { xs: 48, md: 56 },
-                            height: { xs: 48, md: 56 },
-                          }}
-                        />
-                      </IconButton>
-                    </Tooltip>
-                    <Menu
-                      sx={{ mt: "45px" }}
-                      id="menu-appbar"
-                      anchorEl={anchorElUser}
-                      anchorOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
-                      PaperProps={{
-                        elevation: 0,
-                        sx: {
-                          overflow: "visible",
-                          filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                          mt: 1.5,
-                          "& .MuiAvatar-root": {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                          },
-                          "&::before": {
-                            content: '""',
-                            display: "block",
-                            position: "absolute",
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            bgcolor: "background.paper",
-                            transform: "translateY(-50%) rotate(45deg)",
-                            zIndex: 0,
-                          },
-                        },
-                      }}
-                      keepMounted
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
-                      open={Boolean(anchorElUser)}
-                      onClose={handleCloseUserMenu}
-                      onClick={handleCloseUserMenu}
-                    >
-                      <MenuItem onClick={handleCloseUserMenu}>
-                        <Avatar /> Profile
-                      </MenuItem>
-                      <MenuItem onClick={handleCloseUserMenu}>
-                        <Avatar /> My account
-                      </MenuItem>
-                      <Divider />
-                      <MenuItem onClick={handleCloseUserMenu}>
-                        <ListItemIcon>
-                          <PersonAdd fontSize="small" />
-                        </ListItemIcon>
-                        Add another account
-                      </MenuItem>
-                      <MenuItem onClick={handleCloseUserMenu}>
-                        <ListItemIcon>
-                          <Settings fontSize="small" />
-                        </ListItemIcon>
-                        Settings
-                      </MenuItem>
-                      <MenuItem onClick={() => navigate("/")}>
-                        <ListItemIcon>
-                          <Logout fontSize="small" />
-                        </ListItemIcon>
-                        Logout
-                      </MenuItem>
-                    </Menu>
-                  </Box>
-                </div>
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="end"
-                  onClick={handleDrawerToggle}
-                  sx={{ ml: 2, display: { sm: "none" } }}
-                >
-                  <MenuIcon />
+            RAXS
+          </Typography>
+          <div>
+            <Box sx={{}}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    alt="Nature"
+                    src="/src/img/ava.jpg"
+                    sx={{
+                      width: { xs: 48, md: 56 },
+                      height: { xs: 48, md: 56 },
+                    }}
+                  />
                 </IconButton>
-              </Toolbar>
-            </Container>
-          </AppBar>
-        </Toolbar>
-
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                PaperProps={{
+                  elevation: 0,
+                  sx: {
+                    overflow: "visible",
+                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                    mt: 1.5,
+                    "& .MuiAvatar-root": {
+                      width: 32,
+                      height: 32,
+                      ml: -0.5,
+                      mr: 1,
+                    },
+                    "&::before": {
+                      content: '""',
+                      display: "block",
+                      position: "absolute",
+                      top: 0,
+                      right: 14,
+                      width: 10,
+                      height: 10,
+                      bgcolor: "background.paper",
+                      transform: "translateY(-50%) rotate(45deg)",
+                      zIndex: 0,
+                    },
+                  },
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+                onClick={handleCloseUserMenu}
+              >
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Avatar /> Profile
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Avatar /> My account
+                </MenuItem>
+                <Divider />
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <ListItemIcon>
+                    <PersonAdd fontSize="small" />
+                  </ListItemIcon>
+                  Add another account
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <ListItemIcon>
+                    <Settings fontSize="small" />
+                  </ListItemIcon>
+                  Settings
+                </MenuItem>
+                <MenuItem onClick={() => navigate("/")}>
+                  <ListItemIcon>
+                    <Logout fontSize="small" />
+                  </ListItemIcon>
+                  Logout
+                </MenuItem>
+              </Menu>
+            </Box>
+          </div>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="end"
+            onClick={handleDrawerToggle}
+            sx={{ ml: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Box>
+        {/* </Container> */}
+      </AppBar>
+      {/* </Toolbar> */}
+      <Box display="flex" mt="60px" width="100%">
         {/* side drawer */}
-        <Box
-          component="nav"
-          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+
+        <Drawer
+          variant="permanent"
+          sx={{
+            width: drawerWidth,
+            display: { xs: "none", sm: "block" },
+            [`& .MuiDrawer-paper`]: {
+              width: drawerWidth,
+              boxSizing: "border-box",
+            },
+          }}
+          open
         >
-          <Drawer
-            container={container}
-            variant="temporary"
-            open={mobileOpen}
-            onTransitionEnd={handleDrawerTransitionEnd}
-            onClose={handleDrawerClose}
-            ModalProps={{ keepMounted: true }}
-            sx={{
+          <Toolbar />
+          {/* list/ links */}
+          <Box sx={{ overflow: "auto" }}>
+            <List>
+              {menuItem.map((item) => (
+                <ListItem
+                  disablePadding
+                  key={item.text}
+                  onClick={() => navigate(item.path)}
+                >
+                  <ListItemButton>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </Drawer>
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onTransitionEnd={handleDrawerTransitionEnd}
+          onClose={handleDrawerClose}
+          ModalProps={{ keepMounted: true }}
+          sx={{
+            width: drawerWidth,
+            display: { xs: "block", sm: "none" },
+            flexShrink: 0,
+            [`& .MuiDrawer-paper`]: {
               width: drawerWidth,
-              display: { xs: "block", sm: "none" },
-              flexShrink: 0,
-              [`& .MuiDrawer-paper`]: {
-                width: drawerWidth,
-                boxSizing: "border-box",
-              },
-            }}
-          >
-            <Toolbar />
-            {/* list/ links */}
-            <Box sx={{ overflow: "auto" }}>
-              <List>
-                {menuItem.map((item) => (
-                  <ListItem
-                    disablePadding
-                    key={item.text}
-                    onClick={() => navigate(item.path)}
-                  >
-                    <ListItemButton>
-                      <ListItemIcon>{item.icon}</ListItemIcon>
-                      <ListItemText primary={item.text} />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          </Drawer>
-          <Drawer
-            variant="permanent"
-            sx={{
-              width: drawerWidth,
-              display: { xs: "none", sm: "block" },
-              [`& .MuiDrawer-paper`]: {
-                width: drawerWidth,
-                boxSizing: "border-box",
-              },
-            }}
-            open
-          >
-            <Toolbar />
-            {/* list/ links */}
-            <Box sx={{ overflow: "auto" }}>
-              <List>
-                {menuItem.map((item) => (
-                  <ListItem
-                    disablePadding
-                    key={item.text}
-                    onClick={() => navigate(item.path)}
-                  >
-                    <ListItemButton>
-                      <ListItemIcon>{item.icon}</ListItemIcon>
-                      <ListItemText primary={item.text} />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          </Drawer>
+              boxSizing: "border-box",
+            },
+          }}
+        >
+          <Toolbar />
+          {/* list/ links */}
+          <Box sx={{ overflow: "auto" }}>
+            <List>
+              {menuItem.map((item) => (
+                <ListItem
+                  disablePadding
+                  key={item.text}
+                  onClick={() => navigate(item.path)}
+                >
+                  <ListItemButton>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </Drawer>
+        <Box width={{ xs: "100%", md: "calc(100% - 170px)" }}>
+          <Outlet />
         </Box>
       </Box>
-    </Container>
+    </>
   );
 };
 
