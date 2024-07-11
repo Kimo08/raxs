@@ -3,7 +3,6 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import AdbIcon from "@mui/icons-material/Adb";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -83,12 +82,10 @@ const Navbar = (props: Props) => {
 
   return (
     <>
-      {/* <Toolbar> */}
       <AppBar
         position="fixed"
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, height: "60px" }}
       >
-        {/* <Container maxWidth="xl"> */}
         <Box display="flex" alignItems="center" px={5}>
           <AdbIcon sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }} />
           <Typography
@@ -98,7 +95,6 @@ const Navbar = (props: Props) => {
               flexGrow: 1,
               mr: 2,
               display: { xs: "flex", md: "flex" },
-              // fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -202,9 +198,7 @@ const Navbar = (props: Props) => {
             <MenuIcon />
           </IconButton>
         </Box>
-        {/* </Container> */}
       </AppBar>
-      {/* </Toolbar> */}
       <Box display="flex" mt="60px" width="100%">
         {/* side drawer */}
 
