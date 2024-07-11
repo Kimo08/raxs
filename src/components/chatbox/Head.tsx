@@ -10,7 +10,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import CallIcon from "@mui/icons-material/Call";
 
-const Head = () => {
+const Head = ({ onClick }: { onClick: (_id: string) => void }) => {
   return (
     <Card
       sx={{
@@ -24,7 +24,11 @@ const Head = () => {
       <CardHeader
         avatar={
           <>
-            <Button color="secondary" sx={{ minWidth: "auto", mr: 1 }}>
+            <Button
+              color="secondary"
+              sx={{ minWidth: "auto", mr: 1 }}
+              onClick={onClick}
+            >
               <ArrowBackIcon />
             </Button>
             <Avatar>M</Avatar>

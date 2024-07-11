@@ -15,7 +15,13 @@ import * as React from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 
-const SideBar = () => {
+const SideBar = ({
+  onClick,
+  chat,
+}: {
+  onClick: (_id: string) => void;
+  chat: string | null;
+}) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
@@ -25,10 +31,9 @@ const SideBar = () => {
   return (
     <Box
       sx={{
-        width: "60vh",
-        display: "flex",
+        width: { xs: "100%", md: "40%" },
+        display: { xs: chat ? "none" : "flex", md: "flex" },
         flexDirection: "column",
-        height: "100vh",
       }}
     >
       <Header />
@@ -54,7 +59,7 @@ const SideBar = () => {
       </Tabs>
       {value === 0 && (
         <List sx={{ p: 0, overflowY: "auto", flex: "1 0 0" }}>
-          <ListItem alignItems="flex-start">
+          <ListItem alignItems="flex-start" onClick={() => onClick("5")}>
             <ListItemAvatar>
               <Avatar alt="Mike Lowry" src="/static/images/avatar/1.jpg" />
             </ListItemAvatar>
