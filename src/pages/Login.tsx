@@ -37,14 +37,14 @@ const Login = () => {
       <Container
         sx={{
           background: "lightgrey",
-          maxHeight: "90vh",
+          maxHeight: "80vh",
           minHeight: "70vh",
-          width: { xs: "70%", md: "70%" },
+          width: { xs: "70%", md: "60%" },
           boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
-          mt: 8,
+          mt: 9,
         }}
       >
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h5" textAlign={"center"} gutterBottom>
           Raxs
         </Typography>
         <Grid container spacing={2}>
@@ -59,7 +59,7 @@ const Login = () => {
               }}
             >
               <Box sx={{ p: 2 }}>
-                <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
+                <Box sx={{ display: "flex", gap: 3, justifyContent: "center" }}>
                   <AdbIcon
                     sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}
                   />
@@ -67,9 +67,10 @@ const Login = () => {
 
                 <Typography
                   variant="h4"
+                  textAlign={"center"}
                   sx={{
                     fontWeight: { md: "500" },
-                    fontSize: { xs: "16px", md: "32px" },
+                    fontSize: { xs: "16px", md: "28px" },
                     mt: 3,
                   }}
                   color="secondary"
@@ -87,9 +88,7 @@ const Login = () => {
             </Paper>
           </Grid>
           <Grid item xs={6} sx={{ mt: 2 }}>
-            <Typography variant="h6" color="success">
-              Login
-            </Typography>
+            <Typography variant="h6">Login</Typography>
             <form
               noValidate
               autoComplete="off"
@@ -148,7 +147,7 @@ const Login = () => {
             </form>
             <Typography
               variant="body1"
-              sx={{ mt: 2, fontSize: { xs: "14px", md: "16px" } }}
+              sx={{ mt: 2, fontSize: { xs: "12px", md: "16px" } }}
             >
               You don't have an account? <Link to="/register">Register</Link>
             </Typography>

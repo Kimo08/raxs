@@ -54,7 +54,7 @@ const DisplayPost = () => {
             sx={{ height: "50px" }}
           />
           <Divider />
-          <Box sx={{ height: "auto" }}>
+          <Box sx={{ height: "auto", ml: 4 }}>
             <Typography gutterBottom>Hello Jeo</Typography>
           </Box>
           <Divider />

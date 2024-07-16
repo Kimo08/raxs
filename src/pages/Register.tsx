@@ -34,23 +34,19 @@ const Register = () => {
     event.preventDefault();
   };
 
-  // const [name, setName] = React.useState("Kio");
-  // const [email, setEmail] = React.useState("email.email.com");
-  // const [password, setPassword] = React.useState("12345");
-
   return (
     <div>
       <Container
         sx={{
           background: "lightgrey",
-          maxHeight: "90vh",
-          minHeight: "70vh",
-          width: { xs: "70%", md: "70%" },
+          maxHeight: "80vh",
+          minHeight: "80vh",
+          width: { xs: "70%", md: "60%" },
           boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
-          mt: 6,
+          mt: 7,
         }}
       >
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h5" textAlign={"center"} mb={2} gutterBottom>
           Welcome to Raxs Media
         </Typography>
         <Grid container spacing={2}>
@@ -60,11 +56,11 @@ const Register = () => {
               sx={{
                 bgcolor: "primary.main",
                 color: "primary.contrastText",
-                height: "90%",
+                height: "100%",
                 boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
               }}
             >
-              <Box sx={{ p: 1 }}>
+              <Box sx={{ p: 2 }}>
                 <Box sx={{ display: "flex", gap: 3, justifyContent: "center" }}>
                   <AdbIcon
                     sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}
@@ -73,9 +69,10 @@ const Register = () => {
 
                 <Typography
                   variant="h4"
+                  textAlign={"center"}
                   sx={{
                     fontWeight: { md: "500" },
-                    fontSize: { xs: "16px", md: "32px" },
+                    fontSize: { xs: "16px", md: "28px" },
                     mt: 3,
                   }}
                   color="secondary"
@@ -83,7 +80,7 @@ const Register = () => {
                   Raxs Chat
                 </Typography>
                 <Typography
-                  sx={{ mt: 1, fontSize: { xs: "12px", md: "16px" } }}
+                  sx={{ mt: 2, fontSize: { xs: "12px", md: "16px" } }}
                 >
                   Raxs chat was developed in the year 2024, the year of the
                   dragon. It is a platform where we connect with one another. It
@@ -93,26 +90,23 @@ const Register = () => {
             </Paper>
           </Grid>
           <Grid item xs={6} sx={{ mt: 2 }}>
-            <form noValidate autoComplete="off">
-              <Typography
-                variant="h5"
-                sx={{
-                  mb: 1,
-                  fontWeight: "500",
-                  fontSize: { xs: "16px", md: "20px" },
-                  textTransform: "uppercase",
-                }}
-              >
-                Register
-              </Typography>
+            <Typography variant="h6">Register</Typography>
+            <form
+              noValidate
+              autoComplete="off"
+              onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+                event.preventDefault();
+              }}
+            >
               <div>
                 <TextField
                   required
-                  id="outlined-required"
+                  id="name"
                   fullWidth
                   label="name"
                   type="name"
                   name="name"
+                  margin="dense"
                   autoFocus
                 />
               </div>
@@ -120,11 +114,10 @@ const Register = () => {
                 <TextField
                   sx={{ mt: 1 }}
                   fullWidth
-                  // helperText="please enter your email"
                   autoFocus
                   required
                   margin="dense"
-                  id="name"
+                  id="email"
                   name="email"
                   label="Email Address"
                   type="email"
@@ -141,7 +134,6 @@ const Register = () => {
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
-                          aria-label="toggle password visibility"
                           onClick={handleClickShowPassword}
                           onMouseDown={handleMouseDownPassword}
                           edge="end"
@@ -167,7 +159,7 @@ const Register = () => {
             </form>
             <Typography
               variant="body1"
-              sx={{ mt: 1, fontSize: { xs: "14px", md: "16px" } }}
+              sx={{ mt: 1, fontSize: { xs: "12px", md: "16px" } }}
             >
               Already have an account? <Link to="/">Login</Link>
             </Typography>
