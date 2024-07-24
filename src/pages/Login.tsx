@@ -18,7 +18,7 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import AdbIcon from "@mui/icons-material/Adb";
-import { useMutation } from "@tanstack/react-query";
+// import { useMutation } from "@tanstack/react-query";
 
 interface IState {
   user: {
@@ -33,12 +33,14 @@ const Login = () => {
       password: "",
     },
   });
-  const { mutate } = useMutation({
-    mutationFn: (newPost) =>
-      fetch("", { method: "POST", body: JSON.stringify(newPost) }).then((res) =>
-        res.json()
-      ),
-  });
+  // const { mutate } = useMutation({
+  //   mutationFn: (newPost) =>
+  //     fetch("https://femmetech-backend.onrender.com/api", {
+  //       method: "POST",
+  //       body: JSON.stringify(newPost),
+  //       headers: { "Content-type": "application/json; charset=UTF-8" },
+  //     }).then((res) => res.json()),
+  // });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setState({
@@ -171,6 +173,7 @@ const Login = () => {
                 variant="contained"
                 endIcon={<KeyboardArrowRight />}
                 onClick={() => navigate("/dash")}
+                // onClick={() => mutate()}
               >
                 Login
               </Button>
