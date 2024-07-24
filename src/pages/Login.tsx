@@ -18,8 +18,42 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import AdbIcon from "@mui/icons-material/Adb";
+import { useMutation } from "@tanstack/react-query";
 
+interface IState {
+  user: {
+    email: string;
+    password: string;
+  };
+}
 const Login = () => {
+  const [state, setState] = React.useState<IState>({
+    user: {
+      email: "",
+      password: "",
+    },
+  });
+  const { mutate } = useMutation({
+    mutationFn: (newPost) =>
+      fetch("", { method: "POST", body: JSON.stringify(newPost) }).then((res) =>
+        res.json()
+      ),
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setState({
+      user: {
+        ...state.user,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    alert("Login Success");
+  };
+
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -89,21 +123,15 @@ const Login = () => {
           </Grid>
           <Grid item xs={6} sx={{ mt: 2 }}>
             <Typography variant="h6">Login</Typography>
-            <form
-              noValidate
-              autoComplete="off"
-              onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
-                event.preventDefault();
-              }}
-            >
+            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
               <div>
                 <TextField
                   sx={{ mt: 2, fontSize: { xs: "6px", md: "12px" } }}
                   fullWidth
-                  // helperText="please enter your email"
+                  value={state.user.email}
+                  onChange={handleChange}
                   autoFocus
                   required
-                  margin="dense"
                   id="name"
                   name="email"
                   label="Email Address"
@@ -116,7 +144,9 @@ const Login = () => {
                     Password
                   </InputLabel>
                   <FilledInput
-                    id="filled-adornment-password"
+                    name="password"
+                    onChange={handleChange}
+                    value={state.user.password}
                     type={showPassword ? "text" : "password"}
                     endAdornment={
                       <InputAdornment position="end">

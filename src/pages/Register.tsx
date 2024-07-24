@@ -21,7 +21,36 @@ import AdbIcon from "@mui/icons-material/Adb";
 
 import { Link, useNavigate } from "react-router-dom";
 
+interface IMedia {
+  user: {
+    name: string;
+    email: string;
+    password: string;
+  };
+}
 const Register = () => {
+  const [state, setState] = React.useState<IMedia>({
+    user: {
+      name: "",
+      email: "",
+      password: "",
+    },
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setState({
+      user: {
+        ...state.user,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    alert("Register Success");
+  };
+
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -91,16 +120,11 @@ const Register = () => {
           </Grid>
           <Grid item xs={6} sx={{ mt: 2 }}>
             <Typography variant="h6">Register</Typography>
-            <form
-              noValidate
-              autoComplete="off"
-              onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
-                event.preventDefault();
-              }}
-            >
+            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
               <div>
                 <TextField
                   required
+                  value={state.user.name}
                   id="name"
                   fullWidth
                   label="name"
@@ -108,6 +132,7 @@ const Register = () => {
                   name="name"
                   margin="dense"
                   autoFocus
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -118,9 +143,11 @@ const Register = () => {
                   required
                   margin="dense"
                   id="email"
+                  value={state.user.email}
                   name="email"
                   label="Email Address"
                   type="email"
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -129,6 +156,9 @@ const Register = () => {
                     Password
                   </InputLabel>
                   <FilledInput
+                    value={state.user.password}
+                    onChange={handleChange}
+                    name="password"
                     id="filled-adornment-password"
                     type={showPassword ? "text" : "password"}
                     endAdornment={
