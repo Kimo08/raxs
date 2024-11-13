@@ -63,7 +63,7 @@ const RegisterForm = () => {
           justifyContent: "center",
           width: "100%",
           maxWidth: { xs: "270px", md: "420px" },
-          ml: 5,
+          ml: 9,
         }}
       >
         <Typography

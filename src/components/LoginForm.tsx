@@ -61,8 +61,8 @@ const LoginForm = () => {
           flexDirection: "column",
           justifyContent: "center",
           width: "100%",
-          maxWidth: { xs: "270px", md: "320px" },
-          ml: 5,
+          maxWidth: { xs: "320px", md: "320px" },
+          ml: 3,
         }}
       >
         <Typography
