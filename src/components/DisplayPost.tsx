@@ -66,47 +66,49 @@ const DisplayPost = () => {
             </IconButton>
             <IconButton onClick={handleClickOpen}>
               <ModeCommentIcon />
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                  component: "form",
-                  onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-                    event.preventDefault();
-                    const formData = new FormData(event.currentTarget);
-                    const formJson = Object.fromEntries(
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      (formData as any).entries()
-                    );
-                    const post = formJson.post;
-                    console.log(post);
-                    handleClose();
-                  },
-                }}
-              >
-                <DialogContent>
-                  <TextField
-                    autoFocus
-                    required
-                    margin="dense"
-                    id="name"
-                    name="post"
-                    label="Post"
-                    type="post"
-                    fullWidth
-                    variant="standard"
-                    sx={{ border: " 0.8px solid black" }}
-                  />
-                </DialogContent>
-                <DialogActions>
-                  <Button sx={{ color: "#355070" }} onClick={handleClose}>
-                    Cancel
-                  </Button>
-                  <Button sx={{ color: "#355070" }} type="submit">
-                    Post
-                  </Button>
-                </DialogActions>
-              </Dialog>
+              {open && (
+                <Dialog
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                    component: "form",
+                    onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
+                      event.preventDefault();
+                      const formData = new FormData(event.currentTarget);
+                      const formJson = Object.fromEntries(
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        (formData as any).entries()
+                      );
+                      const post = formJson.post;
+                      console.log(post);
+                      handleClose();
+                    },
+                  }}
+                >
+                  <DialogContent>
+                    <TextField
+                      autoFocus
+                      required
+                      margin="dense"
+                      id="name"
+                      name="post"
+                      label="Post"
+                      type="post"
+                      fullWidth
+                      variant="standard"
+                      sx={{ border: " 0.8px solid black" }}
+                    />
+                  </DialogContent>
+                  <DialogActions>
+                    <Button sx={{ color: "#355070" }} onClick={handleClose}>
+                      Cancel
+                    </Button>
+                    <Button sx={{ color: "#355070" }} type="submit">
+                      Post
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              )}
             </IconButton>
           </CardActions>
         </Card>

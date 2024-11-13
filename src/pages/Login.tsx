@@ -1,75 +1,38 @@
-import * as React from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { KeyboardArrowRight } from "@mui/icons-material";
-import { Link, useNavigate } from "react-router-dom";
-import IconButton from "@mui/material/IconButton";
-import FilledInput from "@mui/material/FilledInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import AdbIcon from "@mui/icons-material/Adb";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import logon from "../assets/logon.svg";
+import LoginForm from "../components/LoginForm";
 // import { useMutation } from "@tanstack/react-query";
+// import { login } from "../services/authService";
 
-interface IState {
+export interface IState {
   user: {
     email: string;
     password: string;
   };
 }
 const Login = () => {
-  const [state, setState] = React.useState<IState>({
-    user: {
-      email: "",
-      password: "",
-    },
-  });
   // const { mutate } = useMutation({
-  //   mutationFn: (newPost) =>
-  //     fetch("https://femmetech-backend.onrender.com/api", {
-  //       method: "POST",
-  //       body: JSON.stringify(newPost),
-  //       headers: { "Content-type": "application/json; charset=UTF-8" },
-  //     }).then((res) => res.json()),
+  //   mutationFn: login,
   // });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setState({
-      user: {
-        ...state.user,
-        [event.target.name]: event.target.value,
-      },
-    });
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    alert("Login Success");
-  };
-
-  const navigate = useNavigate();
-
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
+  // const handleLogin = () => {
+  //   const payload = {
+  //     username: state.user.email,
+  //     password: state.user.password,
+  //   };
+  //   mutate(payload);
+  // };
 
   return (
-    <div>
+    <div
+      style={{
+        background: "url(/src/img/ava.jpg) no-repeat",
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        justifyContent: "space-evenly",
+        display: "flex",
+      }}
+    >
       <Container
         sx={{
           background: "lightgrey",
@@ -80,11 +43,26 @@ const Login = () => {
           mt: 9,
         }}
       >
-        <Typography variant="h5" textAlign={"center"} gutterBottom>
-          Raxs
-        </Typography>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <img
+            src={logon}
+            width={40}
+            height={40}
+            style={{ display: "flex", marginRight: 6, marginTop: 6 }}
+          />
+          <Typography
+            variant="h4"
+            fontWeight={700}
+            textAlign={"center"}
+            gutterBottom
+            sx={{ marginTop: 1 }}
+          >
+            Raxs
+          </Typography>
+        </div>
+
         <Grid container spacing={2}>
-          <Grid item xs={6} sx={{ mt: 2 }}>
+          <Grid item xs={6} sx={{ mt: 2, display: { xs: "none", md: "grid" } }}>
             <Paper
               square
               sx={{
@@ -96,8 +74,11 @@ const Login = () => {
             >
               <Box sx={{ p: 2 }}>
                 <Box sx={{ display: "flex", gap: 3, justifyContent: "center" }}>
-                  <AdbIcon
-                    sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}
+                  <img
+                    src={logon}
+                    width={30}
+                    height={30}
+                    style={{ display: "flex", marginRight: 8 }}
                   />
                 </Box>
 
@@ -105,11 +86,11 @@ const Login = () => {
                   variant="h4"
                   textAlign={"center"}
                   sx={{
-                    fontWeight: { md: "500" },
+                    fontWeight: { md: "700" },
                     fontSize: { xs: "16px", md: "28px" },
                     mt: 3,
+                    text: "black",
                   }}
-                  color="secondary"
                 >
                   Raxs Chat
                 </Typography>
@@ -123,68 +104,7 @@ const Login = () => {
               </Box>
             </Paper>
           </Grid>
-          <Grid item xs={6} sx={{ mt: 2 }}>
-            <Typography variant="h6">Login</Typography>
-            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-              <div>
-                <TextField
-                  sx={{ mt: 2, fontSize: { xs: "6px", md: "12px" } }}
-                  fullWidth
-                  value={state.user.email}
-                  onChange={handleChange}
-                  autoFocus
-                  required
-                  id="name"
-                  name="email"
-                  label="Email Address"
-                  type="email"
-                />
-              </div>
-              <div>
-                <FormControl variant="filled" fullWidth focused>
-                  <InputLabel htmlFor="filled-adornment-password">
-                    Password
-                  </InputLabel>
-                  <FilledInput
-                    name="password"
-                    onChange={handleChange}
-                    value={state.user.password}
-                    type={showPassword ? "text" : "password"}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                </FormControl>
-              </div>
-              <Button
-                sx={{ marginTop: "20px" }}
-                fullWidth
-                type="submit"
-                color="secondary"
-                variant="contained"
-                endIcon={<KeyboardArrowRight />}
-                onClick={() => navigate("/dash")}
-                // onClick={() => mutate()}
-              >
-                Login
-              </Button>
-            </form>
-            <Typography
-              variant="body1"
-              sx={{ mt: 2, fontSize: { xs: "12px", md: "16px" } }}
-            >
-              You don't have an account? <Link to="/register">Register</Link>
-            </Typography>
-          </Grid>
+          <LoginForm />
         </Grid>
       </Container>
     </div>

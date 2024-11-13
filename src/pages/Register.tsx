@@ -1,98 +1,96 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { KeyboardArrowRight } from "@mui/icons-material";
-import * as React from "react";
-import IconButton from "@mui/material/IconButton";
-import FilledInput from "@mui/material/FilledInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import AdbIcon from "@mui/icons-material/Adb";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+// import { useMutation } from "@tanstack/react-query";
+// import { register } from "../services/authService";
+import logon from "../assets/logon.svg";
+import RegisterForm from "../components/RegisterForm";
 
-import { Link, useNavigate } from "react-router-dom";
-
-interface IMedia {
+export interface IMedia {
   user: {
-    name: string;
+    firstname: string;
+    phone: number;
+    lastname: string;
     email: string;
     password: string;
   };
 }
 const Register = () => {
-  const [state, setState] = React.useState<IMedia>({
-    user: {
-      name: "",
-      email: "",
-      password: "",
-    },
-  });
+  // const { mutate } = useMutation({
+  //   mutationFn: register,
+  // });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setState({
-      user: {
-        ...state.user,
-        [event.target.name]: event.target.value,
-      },
-    });
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    alert("Register Success");
-  };
-
-  const navigate = useNavigate();
-
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
+  // const handleRegister = () => {
+  //   const payload = new FormData();
+  //   payload.append("firstname", state.user.firstname);
+  //   payload.append("lastname", state.user.lastname);
+  //   payload.append("phone", String(state.user.phone));
+  //   payload.append("role", "PATIENT");
+  //   payload.append("email", state.user.email);
+  //   payload.append("password", state.user.password);
+  //   mutate(payload);
+  // };
 
   return (
-    <div>
+    <div
+      style={{
+        background: "url(/src/img/ava.jpg) no-repeat",
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        justifyContent: "space-evenly",
+        display: "flex",
+      }}
+    >
       <Container
         sx={{
           background: "lightgrey",
-          maxHeight: "80vh",
-          minHeight: "80vh",
-          width: { xs: "70%", md: "60%" },
+          maxHeight: "87vh",
+          minHeight: "87vh",
+          width: { xs: "70%", md: "80%" },
           boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
-          mt: 7,
+          mt: 5,
         }}
       >
-        <Typography variant="h5" textAlign={"center"} mb={2} gutterBottom>
-          Welcome to Raxs Media
-        </Typography>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src={logon}
+            width={40}
+            height={40}
+            style={{ display: "flex", marginRight: 6, marginTop: 6 }}
+          />
+          <Typography
+            variant="h4"
+            fontWeight={700}
+            textAlign={"center"}
+            mb={2}
+            mt={1}
+            gutterBottom
+          >
+            Raxs
+          </Typography>
+        </div>
+
         <Grid container spacing={2}>
-          <Grid item xs={6} sx={{ mt: 2 }}>
+          <Grid item xs={6} sx={{ mt: 8, display: { xs: "none", md: "grid" } }}>
             <Paper
               square
               sx={{
                 bgcolor: "primary.main",
                 color: "primary.contrastText",
-                height: "100%",
+                height: "65%",
                 boxShadow: "0 0 10px rgba(0, 0, 0, .2)",
               }}
             >
               <Box sx={{ p: 2 }}>
                 <Box sx={{ display: "flex", gap: 3, justifyContent: "center" }}>
-                  <AdbIcon
-                    sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}
+                  <img
+                    src={logon}
+                    width={30}
+                    height={30}
+                    style={{ display: "flex", marginRight: 8 }}
                   />
                 </Box>
 
@@ -100,11 +98,11 @@ const Register = () => {
                   variant="h4"
                   textAlign={"center"}
                   sx={{
-                    fontWeight: { md: "500" },
+                    fontWeight: { md: "700" },
                     fontSize: { xs: "16px", md: "28px" },
                     mt: 3,
+                    text: "black",
                   }}
-                  color="secondary"
                 >
                   Raxs Chat
                 </Typography>
@@ -118,82 +116,7 @@ const Register = () => {
               </Box>
             </Paper>
           </Grid>
-          <Grid item xs={6} sx={{ mt: 2 }}>
-            <Typography variant="h6">Register</Typography>
-            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-              <div>
-                <TextField
-                  required
-                  value={state.user.name}
-                  id="name"
-                  fullWidth
-                  label="name"
-                  type="name"
-                  name="name"
-                  margin="dense"
-                  autoFocus
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <TextField
-                  sx={{ mt: 1 }}
-                  fullWidth
-                  autoFocus
-                  required
-                  margin="dense"
-                  id="email"
-                  value={state.user.email}
-                  name="email"
-                  label="Email Address"
-                  type="email"
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <FormControl fullWidth sx={{ mt: 1 }} variant="filled" required>
-                  <InputLabel htmlFor="filled-adornment-password">
-                    Password
-                  </InputLabel>
-                  <FilledInput
-                    value={state.user.password}
-                    onChange={handleChange}
-                    name="password"
-                    id="filled-adornment-password"
-                    type={showPassword ? "text" : "password"}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                </FormControl>
-              </div>
-              <Button
-                sx={{ mt: 1 }}
-                type="submit"
-                color="secondary"
-                variant="contained"
-                fullWidth
-                endIcon={<KeyboardArrowRight />}
-                onClick={() => navigate("/dash")}
-              >
-                Register
-              </Button>
-            </form>
-            <Typography
-              variant="body1"
-              sx={{ mt: 1, fontSize: { xs: "12px", md: "16px" } }}
-            >
-              Already have an account? <Link to="/">Login</Link>
-            </Typography>
-          </Grid>
+          <RegisterForm />
         </Grid>
       </Container>
     </div>

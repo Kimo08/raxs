@@ -1,38 +1,33 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import AdbIcon from "@mui/icons-material/Adb";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import MenuIcon from "@mui/icons-material/Menu";
+import { SubjectOutlined } from "@mui/icons-material";
+import ChatIcon from "@mui/icons-material/Chat";
 import {
-  Box,
-  Divider,
   Drawer,
   List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
-  Menu,
+  Toolbar,
 } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Box, Divider, ListItemIcon, Menu } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import { SubjectOutlined } from "@mui/icons-material";
-import { Outlet, useNavigate } from "react-router-dom";
-import ChatIcon from "@mui/icons-material/Chat";
 import { Logout, PersonAdd, Settings } from "@mui/icons-material";
-
-const drawerWidth = 170;
+import logon from "../assets/logon.svg";
+import SideDrawer from "./SideDrawer";
+import { Outlet, useNavigate } from "react-router-dom";
 
 interface Props {
   window?: () => Window;
 }
+const drawerWidth = 170;
 
 const Navbar = (props: Props) => {
-  const navigate = useNavigate();
-
   const menuItem = [
     {
       text: "Feeds",
@@ -45,7 +40,9 @@ const Navbar = (props: Props) => {
       path: "message",
     },
   ];
-
+  const navigate = useNavigate();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isClosing, setIsClosing] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -58,23 +55,20 @@ const Navbar = (props: Props) => {
     setAnchorElUser(null);
   };
 
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
-
-  const handleDrawerClose = () => {
-    setIsClosing(true);
-    setMobileOpen(false);
-  };
-
-  const handleDrawerTransitionEnd = () => {
-    setIsClosing(false);
-  };
-
   const handleDrawerToggle = () => {
     if (!isClosing) {
       setMobileOpen(!mobileOpen);
     }
+  };
+  const { window } = props;
+  const handleDrawerClose = () => {
+    setIsClosing(true);
+    setMobileOpen(false);
+    !isClosing;
+  };
+
+  const handleDrawerTransitionEnd = () => {
+    setIsClosing(false);
   };
 
   const container =
@@ -87,7 +81,13 @@ const Navbar = (props: Props) => {
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, height: "60px" }}
       >
         <Box display="flex" alignItems="center" px={5}>
-          <AdbIcon sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }} />
+          <img
+            src={logon}
+            width={40}
+            height={40}
+            style={{ display: "flex", marginRight: 8 }}
+          />
+
           <Typography
             variant="h6"
             noWrap
@@ -201,38 +201,7 @@ const Navbar = (props: Props) => {
       </AppBar>
       <Box display="flex" mt="60px" width="100%">
         {/* side drawer */}
-
-        <Drawer
-          variant="permanent"
-          sx={{
-            width: drawerWidth,
-            display: { xs: "none", sm: "block" },
-            [`& .MuiDrawer-paper`]: {
-              width: drawerWidth,
-              boxSizing: "border-box",
-            },
-          }}
-          open
-        >
-          <Toolbar />
-          {/* list/ links */}
-          <Box sx={{ overflow: "auto" }}>
-            <List>
-              {menuItem.map((item) => (
-                <ListItem
-                  disablePadding
-                  key={item.text}
-                  onClick={() => navigate(item.path)}
-                >
-                  <ListItemButton>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        </Drawer>
+        <SideDrawer />
         <Drawer
           container={container}
           variant="temporary"
