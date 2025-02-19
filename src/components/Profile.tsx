@@ -3,6 +3,13 @@ import { useState } from "react";
 
 const Profile = () => {
   const [image, setImage] = useState();
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      // you can display the error to the user
+      console.error("Select a file");
+      return setImage;
+    }
+  };
   return (
     <div
       style={{
@@ -44,7 +51,7 @@ const Profile = () => {
             }}
           >
             <input
-              onChange={(e) => setImage(e.target.files[0])}
+              onChange={handleChange}
               type="file"
               id="avatar"
               accept=".png, .jpg, .jpeg"
