@@ -84,7 +84,7 @@ const Login = () => {
           sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
         >
           <img
-            src="/src/assets/img/sea.png"
+            src="/img/sea.png"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
             alt="chat"
           />

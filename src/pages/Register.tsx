@@ -94,7 +94,7 @@ const Register = () => {
           sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
         >
           <img
-            src="/src/assets/img/meditate.jpg"
+            src="/img/meditate.jpg"
             style={{ width: "100%", height: "100vh", objectFit: "cover" }}
             alt="chat"
           />

@@ -108,7 +108,7 @@ const Navbar = (props: Props) => {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt="Nature"
-                    src="/src/assets/img/ava.jpg"
+                    src="/img/ava.jpg"
                     sx={{
                       width: { xs: 48, md: 56 },
                       height: { xs: 48, md: 56 },

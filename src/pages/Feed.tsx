@@ -11,7 +11,7 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import DisplayPost from "../components/DisplayPost";
-import avatar from "/src/assets/img/ava.jpg";
+import avatar from "/img/ava.jpg";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
