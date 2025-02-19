@@ -62,9 +62,9 @@ const Header = () => {
       }}
     >
       <CardHeader
-        avatar={<Avatar alt="Nature" src="/src/img/ava.jpg" />}
+        avatar={<Avatar alt="Nature" src="/src/assets/img/ava.jpg" />}
         action={
-          <IconButton aria-label="settings">
+          <IconButton aria-label="settings" sx={{ color: "white" }}>
             <MoreVertIcon />
           </IconButton>
         }

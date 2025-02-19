@@ -98,7 +98,6 @@ const Navbar = (props: Props) => {
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
-              textDecoration: "none",
             }}
           >
             RAXS
@@ -109,7 +108,7 @@ const Navbar = (props: Props) => {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt="Nature"
-                    src="/src/img/ava.jpg"
+                    src="/src/assets/img/ava.jpg"
                     sx={{
                       width: { xs: 48, md: 56 },
                       height: { xs: 48, md: 56 },
@@ -160,7 +159,7 @@ const Navbar = (props: Props) => {
                 onClose={handleCloseUserMenu}
                 onClick={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={() => navigate("/profile")}>
                   <Avatar /> Profile
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>

@@ -6,6 +6,9 @@ import ErrorPage from "../src/pages/ErrorPage";
 import Feed from "../src/pages/Feed";
 import Message from "../src/pages/Message";
 import "./App.css";
+import Profile from "./components/Profile";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const router = createBrowserRouter([
@@ -32,8 +35,17 @@ function App() {
         },
       ],
     },
+    {
+      path: "/profile",
+      element: <Profile />,
+    },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <ToastContainer />
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;

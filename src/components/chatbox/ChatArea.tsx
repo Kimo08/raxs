@@ -38,7 +38,7 @@ const ChatArea = () => {
         }}
       >
         <ListItem sx={{ mb: 2 }}>
-          <Box sx={{ display: "flex", width: "70%" }}>
+          <Box sx={{ display: "flex", width: "50%" }}>
             <ListItemAvatar>
               <Avatar alt="Mike Lowry" src="/static/images/avatar/1.jpg" />
             </ListItemAvatar>
@@ -74,7 +74,7 @@ const ChatArea = () => {
         </ListItem>
         <ListItem sx={{ flexDirection: "row-reverse", mb: 2 }}>
           <Box
-            sx={{ display: "flex", width: "70%", flexDirection: "row-reverse" }}
+            sx={{ display: "flex", width: "50%", flexDirection: "row-reverse" }}
           >
             <ListItemAvatar
               sx={{ display: "flex", flexDirection: "row-reverse" }}
@@ -118,7 +118,7 @@ const ChatArea = () => {
           </Box>
         </ListItem>
         <ListItem sx={{ mb: 2 }}>
-          <Box sx={{ display: "flex", width: "70%" }}>
+          <Box sx={{ display: "flex", width: "50%" }}>
             <ListItemAvatar>
               <Avatar alt="Mike Lowry" src="/static/images/avatar/1.jpg" />
             </ListItemAvatar>
@@ -129,6 +129,43 @@ const ChatArea = () => {
                 secondary={
                   <Typography variant="caption">Ali Connors</Typography>
                 }
+              />
+              <Box
+                mt={1}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  mt: 1,
+                }}
+              >
+                <Typography variant="body2"> 12.30 PM</Typography>
+                <Box>
+                  <IconButton size="small">
+                    <ReplyIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton size="small">
+                    <DeleteOutlineIcon fontSize="small" />
+                  </IconButton>
+                </Box>
+              </Box>
+            </Paper>
+          </Box>
+        </ListItem>
+        <ListItem sx={{ mb: 2 }}>
+          <Box sx={{ display: "flex", width: "50%" }}>
+            <ListItemAvatar>
+              <Avatar alt="Mike Lowry" src="/static/images/avatar/1.jpg" />
+            </ListItemAvatar>
+            <Paper sx={{ width: "100%", p: 1.5 }}>
+              <img
+                alt=""
+                src="/src/img/ava.jpg"
+                style={{
+                  maxWidth: "230px",
+                  marginBottom: "30px",
+                  borderRadius: "10px",
+                }}
               />
               <Box
                 mt={1}

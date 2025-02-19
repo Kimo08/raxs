@@ -35,17 +35,20 @@ const Head = ({ onClick }: { onClick: () => void }) => {
         }
         action={
           <>
-            <IconButton>
+            <IconButton sx={{ color: "white" }}>
               <VideoCallIcon />
             </IconButton>
-            <IconButton>
+            <IconButton sx={{ color: "white" }}>
               <CallIcon />
             </IconButton>
           </>
         }
         title="Mike Lowry"
         subheader={
-          <Typography variant="caption">Software Developer</Typography>
+          <>
+            <Typography variant="caption">Software Developer</Typography>
+            {/* <img src="" alt=""/> */}
+          </>
         }
       />
     </Card>
